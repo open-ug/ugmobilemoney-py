@@ -42,6 +42,8 @@ def transfer(
     external_id: str,
     reference_id: str,
     callback_url: str,
+    payer_message: str = None,
+    payee_note: str = None,
 ) -> Response:
     """
     Transfer funds from your account to client mobile money account.
@@ -74,8 +76,8 @@ def transfer(
             "partyIdType": "MSISDN",
             "partyId": MSISDN
         },
-        "payerMessage": "PAYMENT for Miapose",
-        "payeeNote": "Paying Loan"
+        "payerMessage": payer_message,
+        "payeeNote": payee_note
     }
     response = httpx.post(
         BASE_URL + "disbursement/v1_0/transfer", headers=headers, json=data
