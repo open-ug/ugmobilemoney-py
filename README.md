@@ -10,6 +10,6 @@ The library utitlizes the Official MTN Mobile Money API. The API is documented [
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install UG Mobile Money.
 
 ```sh
-pip install ug-mobile-money
+pip install ugmobilemoney
 ```
 
