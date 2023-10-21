@@ -3,21 +3,23 @@ import base64
 import json
 import uuid
 from httpx import Response
-from . import SANDBOX_URL
+
+SANDBOX_URL = "https://sandbox.momodeveloper.mtn.com/"
+PRODUCTION_URL = "https://momodeveloper.mtn.com/"
 
 
 def create_api_key(
-		subscription_key: str, 
-		X_Reference_id: str, 
-		providerCallbackHost: str,
-	) -> Response:
+    subscription_key: str,
+    X_Reference_id: str,
+    providerCallbackHost: str,
+) -> Response:
     """
     Create API Key.
 
-	Args:
-		subscription_key (str): Subscription key
-		X_Reference_id (str): Reference ID for Your API User. (UUID) 
-		providerCallbackHost (str): Provider callback host. eg. google.com.
+        Args:
+                subscription_key (str): Subscription key
+                X_Reference_id (str): Reference ID for Your API User. (UUID) 
+                providerCallbackHost (str): Provider callback host. eg. google.com.
     """
     headers = {
         "X-Reference-Id": X_Reference_id,
@@ -29,17 +31,16 @@ def create_api_key(
     _response = httpx.post(
         SANDBOX_URL + "v1_0/apiuser", headers=headers, json=data
     )
-    
+
     if _response.status_code == 201:
         pass
     else:
         return _response
     # Post to /v1_0/apiuser/{X-Reference-Id}/apikey to get an APIKEY for the user
     response = httpx.post(
-        SANDBOX_URL + "v1_0/apiuser/" + X_Reference_id + "/apikey", 
+        SANDBOX_URL + "v1_0/apiuser/" + X_Reference_id + "/apikey",
         headers={
             "Ocp-Apim-Subscription-Key": subscription_key,
         }
     )
     return response
-

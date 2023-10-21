@@ -1,12 +1,19 @@
 from httpx import Response
-from . import PRODUCTION_URL, SANDBOX_URL
+import httpx
+import base64
+import json
+
+
+SANDBOX_URL = "https://sandbox.momodeveloper.mtn.com/"
+PRODUCTION_URL = "https://momodeveloper.mtn.com/"
+
 
 def get_access_token(
-    subscription_key, 
-    X_Reference_id: str, 
+    subscription_key,
+    X_Reference_id: str,
     apiKey: str,
     production: bool = True,
-    ) -> Response:
+) -> Response:
     """
     Get an access token
     """
@@ -26,16 +33,16 @@ def get_access_token(
 
 
 def transfer(
-        amount: str,
-        MSISDN: str,
-        currency: str,
-        target_environment: str,
-        subscription_key: str,
-        access_token: str,
-        external_id: str,
-        reference_id: str,
-        callback_url: str,
-    ) -> Response:
+    amount: str,
+    MSISDN: str,
+    currency: str,
+    target_environment: str,
+    subscription_key: str,
+    access_token: str,
+    external_id: str,
+    reference_id: str,
+    callback_url: str,
+) -> Response:
     """
     Transfer funds from your account to client mobile money account.
 
