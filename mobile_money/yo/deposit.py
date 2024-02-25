@@ -3,6 +3,7 @@ import httpx
 import xmltodict
 
 SANDBOX_URL = "https://sandbox.yo.co.ug/services/yopaymentsdev/task.php"
+PRODUCTION_URL = "https://sandbox.yo.co.ug/services/yopaymentsdev/task.php"
 
 """ 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -45,6 +46,7 @@ def deposit_funds(
     InstantNotificationUrl: str | None = None,
     FailureNotificationUrl: str | None = None,
     AuthenticationSignatureBase64: str | None = None,
+    sandbox: bool = True,
 ) -> Response:
     """
     Deposit funds to a mobile money account.
@@ -67,6 +69,8 @@ def deposit_funds(
         FailureNotificationUrl (str): Failure notification URL.
         AuthenticationSignatureBase64 (str): Authentication signature base64.
     """
+
+    BASE_URL = SANDBOX_URL if sandbox else PRODUCTION_URL
 
     headers = {
         "Content-Type": "text/xml",
@@ -113,6 +117,6 @@ def deposit_funds(
     """
 
     response = httpx.post(
-        SANDBOX_URL, headers=headers, content=data.encode("utf-8"), timeout=None
+        BASE_URL, headers=headers, content=data.encode("utf-8"), timeout=None
     )
     return response

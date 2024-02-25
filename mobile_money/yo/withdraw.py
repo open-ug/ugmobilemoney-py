@@ -3,6 +3,7 @@ import httpx
 # import xmltodict
 
 SANDBOX_URL = "https://sandbox.yo.co.ug/services/yopaymentsdev/task.php"
+PRODUCTION_URL = "https://sandbox.yo.co.ug/services/yopaymentsdev/task.php"
 
 """ 
 <?xml version="1.0" encoding="UTF-8"?> 
@@ -45,7 +46,9 @@ def withdraw(
     ProviderReferenceText: str,
     PublicKeyAuthenticationNonce: str,
     PublicKeyAuthenticationSignatureBase64: str,
+    sandbox: bool = True,
 ) -> Response:
+    BASE_URL = SANDBOX_URL if sandbox else PRODUCTION_URL
     headers = {
         "Content-Type": "text/xml",
         "Content-transfer-encoding": "text",
@@ -88,6 +91,6 @@ def withdraw(
     """
 
     response = httpx.post(
-        SANDBOX_URL, headers=headers, content=data.encode("utf-8"), timeout=None
+        BASE_URL, headers=headers, content=data.encode("utf-8"), timeout=None
     )
     return response
