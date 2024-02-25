@@ -10,7 +10,7 @@ PRODUCTION_URL = "https://momodeveloper.mtn.com/"
 
 def get_access_token(
     subscription_key,
-    X_Reference_id: str,
+    x_reference_id: str,
     apiKey: str,
     production: bool = True,
 ) -> Response:
@@ -18,7 +18,7 @@ def get_access_token(
     Get an access token
     """
     BASE_URL = PRODUCTION_URL if production else SANDBOX_URL
-    auth_str = X_Reference_id + ":" + apiKey
+    auth_str = x_reference_id + ":" + apiKey
     headers = {
         "Ocp-Apim-Subscription-Key": subscription_key,
         # Basic authentication header Where the username is the X-Reference-Id and the password is the APIKEY. It should be in base64 encoding.
