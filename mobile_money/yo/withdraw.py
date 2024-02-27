@@ -36,16 +36,16 @@ def withdraw(
     NonBlocking: str,
     Amount: str,
     Account: str,
-    AccountProviderCode: str,
-    TransactionLimitAccountIdentifier: str,
     Narrative: str,
-    NarrativeFileName: str,
-    NarrativeFileBase64: str,
-    InternalReference: str,
-    ExternalReference: str,
-    ProviderReferenceText: str,
-    PublicKeyAuthenticationNonce: str,
-    PublicKeyAuthenticationSignatureBase64: str,
+    AccountProviderCode=None,
+    TransactionLimitAccountIdentifier=None,
+    NarrativeFileName=None,
+    NarrativeFileBase64=None,
+    InternalReference=None,
+    ExternalReference=None,
+    ProviderReferenceText=None,
+    PublicKeyAuthenticationNonce=None,
+    PublicKeyAuthenticationSignatureBase64=None,
     sandbox: bool = True,
 ) -> Response:
     BASE_URL = SANDBOX_URL if sandbox else PRODUCTION_URL
@@ -75,6 +75,9 @@ def withdraw(
         "PublicKeyAuthenticationSignatureBase64": PublicKeyAuthenticationSignatureBase64,
     }
 
+    optional_fields = {k: v for k,
+                       v in optional_fields.items() if v is not None}
+
     data = {**mandatory_fields, **optional_fields}
 
     data = """<?xml version="1.0" encoding="UTF-8"?>
@@ -90,7 +93,7 @@ def withdraw(
     </AutoCreate>
     """
 
-    response = httpx.post(
+    respons = httpx.post(
         BASE_URL, headers=headers, content=data.encode("utf-8"), timeout=None
     )
-    return response
+    return respons
