@@ -99,11 +99,3 @@ def parse_response(resp: Response) -> dict:
     """
     data = xmltodict.parse(resp.content)
     return data
-
-
-yo = Yo(api_username="90003123107", api_password="4154388903", sandbox=True)
-
-response = yo.deposit(
-    amount="10000", account="256704203035", narrative="9858989489")
-
-print(response.text)
