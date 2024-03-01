@@ -1,6 +1,9 @@
+"""
+This module provides a simple interface to the MTN Mobile Money API.
+"""
+import datetime
 from .collections import get_access_token, request_to_pay
 from .disbursments import get_access_token as get_access_token_disbursments, transfer
-import datetime
 
 
 SANDBOX_URL = "https://sandbox.momodeveloper.mtn.com/"

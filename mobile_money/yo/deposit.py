@@ -87,7 +87,7 @@ def deposit_funds(
     }
 
     optional_fields = {
-        "NonBlocking": NonBlocking,
+        "NonBlocking": "TRUE" if NonBlocking else "FALSE",
         "AccountProviderCode": AccountProviderCode,
         "NarrativeFileName": NarrativeFileName,
         "NarrativeFileBase64": NarrativeFileBase64,
