@@ -5,30 +5,6 @@ import httpx
 SANDBOX_URL = "https://sandbox.yo.co.ug/services/yopaymentsdev/task.php"
 PRODUCTION_URL = "https://sandbox.yo.co.ug/services/yopaymentsdev/task.php"
 
-""" 
-<?xml version="1.0" encoding="UTF-8"?> 
-<AutoCreate> 
- <Request> 
- <APIUsername></APIUsername> 
- <APIPassword></APIPassword> 
- <Method>acwithdrawfunds</Method> 
- <NonBlocking></NonBlocking> 
- <Amount></Amount> 
- <Account></Account> 
- <AccountProviderCode></AccountProviderCode> 
- <TransactionLimitAccountIdentifier></TransactionLimitAccountIdentifier> 
- <Narrative></Narrative> 
- <NarrativeFileName></NarrativeFileName> 
- <NarrativeFileBase64></NarrativeFileBase64> 
- <InternalReference></InternalReference> 
- <ExternalReference></ExternalReference> 
- <ProviderReferenceText></ProviderReferenceText> 
- <PublicKeyAuthenticationNonce></PublicKeyAuthenticationNonce> 
- <PublicKeyAuthenticationSignatureBase64></PublicKeyAuthenticationSignatureBase64> 
- </Request> 
-</AutoCreate>
- """
-
 
 def withdraw(
     APIUsername: str,

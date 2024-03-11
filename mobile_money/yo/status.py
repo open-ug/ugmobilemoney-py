@@ -25,7 +25,7 @@ Below is the format of the XML request:
 def get_transaction_status(
     APIUsername: str,
     APIPassword: str,
-    TransactionReference: str,
+    TransactionReference: str = None,
     PrivateTransactionReference: str = None,
     DepositTransactionType: str = None,
     sandbox: bool = True,
@@ -40,10 +40,10 @@ def get_transaction_status(
         "APIUsername": APIUsername,
         "APIPassword": APIPassword,
         "Method": "actransactioncheckstatus",
-        "TransactionReference": TransactionReference,
     }
 
     optional_fields = {
+        "TransactionReference": TransactionReference,
         "PrivateTransactionReference": PrivateTransactionReference,
         "DepositTransactionType": DepositTransactionType,
     }

@@ -14,16 +14,19 @@ class Transaction:
     """
     tx_ref = None
     sandbox = False
+    private_transaction_reference = None
 
     def __init__(
         self,
         api_username: str,
         api_password: str,
+        private_tx_ref: str = None,
         tx_ref: str = None,
         sandbox: bool = False,
     ):
         self.api_username = api_username
         self.api_password = api_password
+        self.private_transaction_reference = private_tx_ref
         self.tx_ref = tx_ref
         self.sandbox = sandbox
 
@@ -31,15 +34,14 @@ class Transaction:
         """
         Get the status of a transaction.
         """
-        if self.tx_ref is None:
-            raise ValueError("Transaction reference is required.")
 
-        return get_transaction_status(
+        return parse_response(get_transaction_status(
             APIUsername=self.api_username,
             APIPassword=self.api_password,
             TransactionReference=self.tx_ref,
+            PrivateTransactionReference=self.private_transaction_reference,
             sandbox=self.sandbox,
-        )
+        ))
 
 
 class Yo:
@@ -78,6 +80,7 @@ class Yo:
             Account=account,
             Narrative=narrative,
             sandbox=self.sandbox,
+            NonBlocking="True",
             **kwargs,
         )
 
