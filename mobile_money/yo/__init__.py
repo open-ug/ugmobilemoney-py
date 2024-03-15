@@ -55,7 +55,7 @@ class Yo:
         self.api_password = api_password
         self.sandbox = sandbox
 
-    def deposit(self, amount: str, account: str, narrative: str, **kwargs) -> Response:
+    def deposit(self, amount: str, account: str, narrative: str, ExternalReference: str, **kwargs) -> Response:
         """
         Deposit funds into a mobile money account.
         """
@@ -66,10 +66,11 @@ class Yo:
             Account=account,
             Narrative=narrative,
             sandbox=self.sandbox,
+            ExternalReference=ExternalReference,
             **kwargs,
         )
 
-    def withdraw(self, amount: str, account: str, narrative: str, **kwargs) -> Response:
+    def withdraw(self, amount: str, account: str, narrative: str, ExternalReference: str, **kwargs) -> Response:
         """
         Withdraw funds from a mobile money account.
         """
@@ -81,6 +82,7 @@ class Yo:
             Account=account,
             Narrative=narrative,
             sandbox=self.sandbox,
+            ExternalReference=ExternalReference,
             **kwargs,
         )
 
