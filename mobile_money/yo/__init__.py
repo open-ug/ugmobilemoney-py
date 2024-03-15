@@ -76,11 +76,11 @@ class Yo:
         return withdraw(
             APIUsername=self.api_username,
             APIPassword=self.api_password,
+            NonBlocking="TRUE",
             Amount=amount,
             Account=account,
             Narrative=narrative,
             sandbox=self.sandbox,
-            NonBlocking="True",
             **kwargs,
         )
 
