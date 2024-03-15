@@ -70,14 +70,14 @@ class Yo:
             **kwargs,
         )
 
-    def withdraw(self, amount: str, account: str, narrative: str, ExternalReference: str, **kwargs) -> Response:
+    def withdraw(self, amount: str, account: str, narrative: str, ExternalReference: str, NonBlocking="FALSE", ** kwargs) -> Response:
         """
         Withdraw funds from a mobile money account.
         """
         return withdraw(
             APIUsername=self.api_username,
             APIPassword=self.api_password,
-            NonBlocking="TRUE",
+            NonBlocking=NonBlocking,
             Amount=amount,
             Account=account,
             Narrative=narrative,
