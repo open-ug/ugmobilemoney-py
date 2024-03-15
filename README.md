@@ -1,6 +1,6 @@
 # <img src="https://flagcdn.com/w40/ug.png"> UG MOBILE MONEY
 
-UG Mobile Money is a python library for making mobile money transactions in Uganda. It currently supports MTN MOMO.
+UG Mobile Money is a python library for making mobile money transactions in Uganda. It currently supports MTN MOMO and Yo Payments
 
 UG Mobile Money provides a simple interface for making mobile money transactions in a way that is similar to what the official MTN Mobile Money API provides but in a more pythonic and simple way. This makes it easy for beginners to get started and also for experienced developers who have been using the official API shift.
 
