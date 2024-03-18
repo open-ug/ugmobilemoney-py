@@ -6,6 +6,7 @@ from httpx import Response
 from .deposit import deposit_funds
 from .withdraw import withdraw
 from .status import get_transaction_status
+from .balance import get_account_balance
 
 
 class Transaction:
@@ -94,6 +95,16 @@ class Yo:
             APIUsername=self.api_username,
             APIPassword=self.api_password,
             TransactionReference=tx_ref,
+            sandbox=self.sandbox,
+        )
+
+    def get_account_balance(self) -> Response:
+        """
+        Get the account balance.
+        """
+        return get_account_balance(
+            APIUsername=self.api_username,
+            APIPassword=self.api_password,
             sandbox=self.sandbox,
         )
 
